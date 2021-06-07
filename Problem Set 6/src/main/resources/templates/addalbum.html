@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Side of the Rainbow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{'/css/main.css'}">
+</head>
+<body style="background-image: linear-gradient(0deg, black, #111111 90%, #111111); color: #fdfcfa">
+
+<div th:include="layout::header"></div>
+
+<section id="content" style="margin-left: 15px; margin-right: 50px; margin-bottom: 10px">
+
+    <h1 class="pageT">Add Album</h1>
+    <h4>Add an album to the database!</h4>
+
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}">
+        An error has occurred!
+    </div>
+    <form action="/admin/albums/add" method="post">
+        <div class="form-group">
+            <label for="title">Album Name</label>
+            <input type="text" class="form-control" id="title" aria-describedby="titleHelp" name="title"
+                   placeholder="Enter album title">
+            <small id="titleHelp" class="form-text text-muted">What is the title of the album?</small>
+        </div>
+        <div class="form-group">
+            <label for="artist">Album Artist</label>
+            <input type="text" class="form-control" id="artist" aria-describedby="artistHelp" name="artist"
+                   placeholder="Enter album artist">
+            <small id="artistHelp" class="form-text text-muted">Who composed the album?</small>
+        </div>
+        <div class="form-group">
+            <label for="dateReleased">Date of Release</label>
+            <input class="form-control" type="date" value="2000-01-01" id="dateReleased"
+                   aria-describedby="dateReleasedHelp"
+                   name="dateReleased" placeholder="Enter date of release">
+            <small id="dateReleasedHelp" class="form-text text-muted">On which day was the album released?</small>
+        </div>
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isROCK" value="1" name="genre" checked="checked">
+                        <label class="form-radio-label" for="isROCK">Rock</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isCLASSICAL" value="2" name="genre">
+                        <label class="form-radio-label" for="isCLASSICAL">Classical</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isPOP" value="3" name="genre">
+                        <label class="form-radio-label" for="isPOP">Pop</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isJAZZ" value="4" name="genre">
+                        <label class="form-radio-label" for="isJAZZ">Jazz</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isJAPANESE_POP" value="5"
+                               name="genre">
+                        <label class="form-radio-label" for="isJAPANESE_POP">J-Pop</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isHINDUSTANI_CLASSICAL" value="6"
+                               name="genre">
+                        <label class="form-radio-label" for="isHINDUSTANI_CLASSICAL">Hindustani Classical</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isCELTIC" value="7" name="genre">
+                        <label class="form-radio-label" for="isCELTIC">Celtic</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isELECTRONICA" value="8"
+                               name="genre">
+                        <label class="form-radio-label" for="isELECTRONICA">Electronica</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isDARK_ROCK" value="9" name="genre">
+                        <label class="form-radio-label" for="isDARK_ROCK">Dark Rock</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isPOP_ROCK" value="10" name="genre">
+                        <label class="form-radio-label" for="isPOP_ROCK">Pop Rock</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-radio form-radio-inline">
+                        <input class="radio" type="radio" id="isDARKWAVE" value="11" name="genre">
+                        <label class="form-radio-label" for="isDARKWAVE">Darkwave</label>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <small id="genreHelp" class="form-text text-muted">Select one or more genres.</small>
+        <br>
+        <div class="form-group">
+            <label for="numberOfTracks">Number of Tracks</label>
+            <input type="number" min="1" value="1" step="1" class="form-control" id="numberOfTracks"
+                   aria-describedby="numberOfTracksHelp" name="numberOfTracks">
+            <small id="numberOfTracksHelp" class="form-text text-muted">How many tracks does the album
+                have?</small>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" min="0" step="0.01" class="form-control" id="price"
+                   aria-describedby="priceHelp"
+                   name="price">
+            <small id="priceHelp" class="form-text text-muted">What is the MSRP for the album?</small>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+        <br>
+    </form>
+
+</section>
+
+<div th:include="layout::footer"></div>
+
+</body>
+</html>

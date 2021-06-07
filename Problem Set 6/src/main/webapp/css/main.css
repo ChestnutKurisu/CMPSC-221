@@ -1,0 +1,82 @@
+small{
+    font-weight: bold;
+}
+
+section#content {
+    min-height: 500px;
+    margin-bottom: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+section#table {
+    min-height: 500px;
+    margin-bottom: 200px;
+}
+
+/*Free fonts (for personal use) from https://www.1001freefonts.com/search.php?q=gothic&d=0&page=3/*/
+@font-face {
+    font-family: websiteTitle;
+    src: url(../fonts/gothic_ultra_ot.otf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: pageTitle;
+    src: url(../fonts/bakery.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: about;
+    src: url(../fonts/DancingScript-Regular.ttf);
+}
+
+h1.pageT {
+    text-align: center;
+    font-family: pageTitle, sans-serif;
+    font-size: 400%;
+}
+
+div#add {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+img.logo {
+    display: block;
+    float: left;
+    width: 225px;
+    position: relative;
+    top: -40px;
+}
+
+img.small-banner {
+    display: block;
+    float: left;
+    width: 70px;
+}
+
+img.preview {
+    display: block;
+    width: 100px;
+    margin-right: 10px;
+}
+
+p.welcome{
+    float: right;
+    font-family: websiteTitle, "Comic Sans MS", "Times New Roman", sans-serif;
+    font-size: 250%;
+    position: relative;
+    top: -200px;
+}
+
+#myTable tr:nth-child(even) {
+    background-color: #212121;
+}
+#myTable tr:nth-child(odd) {
+    background-color: #2E2E2E;
+}
+#myTable tr:hover {
+    background-color: #111111;
+}

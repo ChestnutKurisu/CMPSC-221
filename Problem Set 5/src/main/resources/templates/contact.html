@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Side of the Rainbow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" async=""
+            src="https://www.gstatic.com/recaptcha/releases/75nbHAdFrusJCwoMVGTXoHoM/recaptcha__en.js"></script>
+    <link rel="stylesheet" th:href="@{'/css/main.css'}">
+
+</head>
+<body style="background-image: linear-gradient(0deg, black, #111111 90%, #111111); color: #fdfcfa">
+
+<div th:include="layout::header"></div>
+
+<section id="content">
+
+    <h1 class="pageT">Contact Us</h1>
+    <h4>We would like to hear from you!</h4>
+    <form action="/contact-us" method="post" style="margin-right: 600px;">
+        <!-- Influenced by the form on https://housing.psu.edu/contact-us -->
+        <div class="form-group">
+            <label for="first-name">First Name<span style="color: crimson">*</span></label>
+            <input class="form-control" required="required" type="text" id="first-name" name="first_name" value="" size="35%"
+                   maxlength="128">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input class="form-control" type="text" id="last-name" name="last_name" value="" size="35%"
+                   maxlength="128">
+        </div>
+        <div class="form-group">
+            <label for="email-address">Email Address<span style="color: crimson">*</span></label>
+            <input class="form-control" required="required" type="email" id="email-address" name="email_address" size="35%">
+        </div>
+        <div class="form-group">
+            <label for="submitted-message">Message<span style="color: crimson">*</span></label>
+            <div>
+                <textarea required="required" id="submitted-message" name="message" cols="100" rows="6" maxlength="512" class="form-textarea"></textarea>
+            </div>
+            <p>Maximum 512 characters.</p>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+    <img th:src="@{/images/img_kaori.png}" style="float:right; display: block; height: 450px;
+     position: absolute; bottom: -250px; right: 105px;" alt="notes whirlpool">
+</section>
+
+<div th:include="layout::footer"></div>
+
+</body>
+</html>

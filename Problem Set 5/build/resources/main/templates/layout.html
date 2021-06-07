@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Side of the Rainbow</title>
+</head>
+<body>
+
+<th:block th:fragment="header">
+    <header>
+        <div class="jumbotron header" style="font-family: 'websiteTitle', sans-serif; color: whitesmoke; background-image: url('/images/atmospheric.jpg');
+             background-repeat: no-repeat; background-size: cover; border-radius: 0px;">
+            <img th:src="@{/images/238825336026212.png}" class="logo" alt="headphones_girl">
+            <h1 class="display-4" style="font-size: 350%; margin-right: 500px; text-align: center;">𝒟ark Side of the
+                Rainbow</h1>
+            <p class="lead" style="font-size: 250%; margin-right: 500px; text-align: center;">Your destination for the
+                best collection of gothic music in town.</p>
+            <p class="welcome" th:if="${#httpServletRequest.remoteUser}" th:inline="text">Welcome back,
+                [[${#httpServletRequest.remoteUser}]]!</p>
+            <p class="welcome" th:unless="${#httpServletRequest.remoteUser}">Welcome to our store!</p>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img th:src="@{/images/floral-rose-flute-music-clipart-craft-image-png.png}" class="small-banner"
+                                                  alt="music beats"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li th:if="${#httpServletRequest.remoteUser eq 'admin'}" class="nav-item active">
+                        <a class="nav-link" href="/admin/albums/view">View<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li th:unless="${#httpServletRequest.remoteUser eq 'admin'}" class="nav-item active">
+                        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact-us">Contact</a>
+                    </li>
+                    <li th:if="${#httpServletRequest.remoteUser eq 'admin'}" class="nav-item">
+                        <a class="nav-link" href="/admin/albums/add">Add Album</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="/search" method="get">
+                    <input name="term" class="form-control mr-sm-2" type="search" placeholder="Search"
+                           aria-label="Search">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Search
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" name="by" th:value="title" type="submit">Search by
+                                Title</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" name="by" th:value="artist" type="submit">Search by
+                                Artist</button>
+                        </div>
+                    </div>
+                </form>
+                <div style="margin-left: 10px; float: right">
+                    <a th:if="${#httpServletRequest.remoteUser}" href="/logout" class="btn btn-danger" role="button">Logout</a>
+                    <a th:unless="${#httpServletRequest.remoteUser}" href="/login" class="btn btn-success"
+                       role="button">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+</th:block>
+
+<th:block th:fragment="footer">
+    <footer>
+        <div class="footer-copyright text-center py-3" th:style="'background: #2E2E2E;'">
+            <cite th:style="'color:white;'">&copy; 2019 Copyright: <a href="/">Dark Side of the Rainbow</a></cite>
+        </div>
+    </footer>
+</th:block>
+
+</body>
+</html>
